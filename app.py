@@ -24,7 +24,7 @@ class HttpWSSProtocol(websockets.WebSocketServerProtocol):
             # HACK: Put the read data back, to continue with normal WS handling.
             self.reader.feed_data(bytes(request_line))
             self.reader.feed_data(headers.as_bytes().replace(b'\n', b'\r\n'))
-            print("conectado")
+            
             return await super(HttpWSSProtocol, self).handler()
         else:
             try:
